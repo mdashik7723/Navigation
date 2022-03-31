@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Navigation</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="code.js" defer></script>
+</head>
+<body>
+<main>
+    <nav class="menu">
+        <ul class="expanded">
+            <li><button onClick="expand(event, 'ul_locations')">Locations & Hours</button>
+                <ul class="expandable" id="ul_locations" data-expanded="false">
+                    <li><label>New York City</label></li>
+                    <li><label>Chicago</label></li>
+                    <li><label>San Francisco</label></li>
+                    <li><label>Los Angeles</label></li>
+                    <li><label>Philadelphia</label></li>
+                    <li><label>Toronto</label></li>
+                    <li><label>Vancouver</label></li>
+                </ul>
+            </li>
+            <li><button onClick="expand(event, 'ul_menu')">Menu</button>
+                <ul class="expandable" id="ul_menu" data-expanded="false">
+                    <li><button onClick="expand(event, 'ul_burgers')">Burgers</button>
+                        <ul class="expandable" id="ul_burgers" data-expanded="false">
+                            <li><label>The Big Cheese</label></li>
+                            <li><label>The Big Veg</label></li>
+                            <li><label>The Double Big-Big</label></li>
+                            <li><label>The Big Boss</label></li>
+                            <li><label>The Little Big</label></li>
+                        </ul>
+                    </li>
+                    <li><button onClick="expand(event, 'ul_fries')">Fries</button>
+                        <ul class="expandable" id="ul_fries" data-expanded="false">
+                            <li><label>Classic Fries</label></li>
+                            <li><label>Seasoned Fries</label></li>
+                            <li><label>Curly Fries</label></li>
+                            <li><label>Tater Tots</label></li>
+                        </ul>
+                    </li>
+                    <li><button onClick="expand(event, 'ul_salads')">Salads</button>
+                        <ul class="expandable" id="ul_salads" data-expanded="false">
+                            <li><label>The Big 'Burg</label></li>
+                            <li><label>The Big Ceasar</label></li>
+                            <li><label>The Giant Garden</label></li>
+                        </ul>
+                    </li>
+                    <li><button onClick="expand(event, 'ul_shakes')">Shakes</button>
+                        <ul class="expandable" id="ul_shakes" data-expanded="false">
+                            <li><label>Big Vanilla</label></li>
+                            <li><label>Big Chocolate</label></li>
+                            <li><label>Big Strawberry</label></li>
+                            <li><label>Big Cookies & Creme</label></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <section id="slider" class="article">
+        <h1>Bertie's <span>Big</span> Burgers</h1>
+        <div class="images">
+            <img id="mainImage" src="" alt="mainImage" />
+            <div id="mainImage_infos"></div>
+        </div>
+        <div class="loader__overlay">
+            <div id="loader"></div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500&display=swap");
+
+* {
+    font-family: "Fredoka", sans-serif;
+}
+
+:root {
+    --body-color: #373b47;
+    --overlay-color: #343742;
+    --overlay-color-dark: #2a2d36;
+    --size-nav: 250px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--body-color);
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--body-color);
+}
+
+#slider {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: var(--size-nav);
+    bottom: 0;
+}
+
+#slider > h1 {
+    position: absolute;
+    z-index: 99999;
+    color: white;
+    background-color: rgba(1, 1, 1, 0.3);
+    padding: 10px 20px;
+    top: 0;
+    right: 0;
+    margin: 0;
+    font-size: 24px;
+}
+
+.images {
+    width: 100%;
+    height: 100%;
+}
+
+.images > img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 2;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s;
+    width: 100%;
+    height: 100%;
+}
+
+#mainImage_infos {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#mainImage_infos > p {
+    max-width: 60%;
+    background-color: rgba(1, 1, 1, 0.6);
+    color: white;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+.images > img.active {
+    opacity: 1;
+}
+.loader__overlay {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 19;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loader {
+    --loader-size: 30px;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    border-radius: 50%;
+    position: relative;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+#loader.hidden {
+    opacity: 0;
+}
+
+#loader::before {
+    --b-inset: 0px;
+    content: "";
+    position: absolute;
+    top: var(--b-inset);
+    left: var(--b-inset);
+    bottom: var(--b-inset);
+    right: var(--b-inset);
+    border-radius: 50%;
+    border: 2px solid white;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    animation: rotate 1s linear infinite;
+}
+
+#loader::after {
+    --b-inset: -5px;
+    content: "";
+    position: absolute;
+    top: var(--b-inset);
+    left: var(--b-inset);
+    bottom: var(--b-inset);
+    right: var(--b-inset);
+    border-radius: 50%;
+    border: 2px solid white;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    animation: rotateReverse 1s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(180deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateReverse {
+    0% {
+        transform: rotate(0);
+        opacity: 0.5;
+    }
+    50% {
+        transform: rotate(-180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(-360deg);
+        opacity: 0.5;
+    }
+}
+
+.menu {
+    width: var(--size-nav);
+    background-color: var(--overlay-color);
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul button,
+ul label {
+    width: var(--size-nav);
+    color: white;
+    border: none;
+    text-align: left;
+    display: block;
+    padding: 10px;
+    transform: scaleY(0.9) scaleX(0.99);
+}
+
+ul label {
+    font-size: 14px;
+}
+
+ul button {
+    font-size: 16px;
+    outline: none;
+    background-color: rgba(1, 1, 1, 0.2);
+    cursor: pointer;
+    padding: 15px 10px;
+    z-index: 999999;
+    position: relative;
+    transition: padding 0.5s, font-size 0.5s;
+    -webkit-box-shadow: 5px 5px 5px -1px #1f1e1e;
+    box-shadow: 5px 5px 5px -1px #1f1e1e;
+}
+
+ul button::before,
+ul button::after {
+    content: ">";
+    position: absolute;
+    transition: opacity 0.3s, transform 0.3s;
+    right: 10px;
+}
+
+ul button::before {
+    opacity: 0;
+    transform: translate(-10px);
+}
+
+ul button::after {
+    transform: translate(0px);
+}
+
+ul button:hover::after {
+    opacity: 0;
+    transform: translate(10px);
+}
+
+ul button:hover::before {
+    opacity: 1;
+    transform: translate(0px);
+}
+
+ul button.expanded {
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: rgba(1, 1, 1, 0.3);
+}
+
+.expandable {
+    opacity: 1;
+    transition: opacity 0.5s 0.3s, transform 0.5s 0.15s, height 0.5s;
+    transform: translateX(0);
+}
+
+.expandable:not(.expanded) {
+    opacity: 0;
+    transition: opacity 0.5s 0s, transform 0.5s 0.15s, height 0.5s 0.5s;
+    transform: translateX(80px);
+}
+
+nav {
+    opacity: 1;
+    transition: opacity 0.5s, transform 0.5s;
+    overflow: auto;
+}
+
+nav:not(.ready) {
+    opacity: 0;
+}
